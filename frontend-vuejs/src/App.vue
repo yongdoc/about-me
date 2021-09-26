@@ -13,20 +13,27 @@
     <input type="text" name="name" v-model="change">
     <button @click="ChangeName(change)">Submit</button>
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
   methods: {
     ChangeName(me){
-      this.title=me
+      try {
+        if(me=="") throw "empty";
+        else {
+          this.title=me
+        }
+      }
+      catch(err) {
+        alert("Input is " + err);
+      }
     },
     Show(){
       this.accepted = !this.accepted
